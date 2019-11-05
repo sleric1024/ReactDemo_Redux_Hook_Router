@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'antd/dist/antd.css'
-import { Input, Button, List } from 'antd'
+import TodoListUI from './TodoListUI'
 import store from './store'
 import { relative } from 'path';
 import {changeInputAction, addItemAction, deleteItemAction} from './store/actionCreators'
@@ -14,6 +14,7 @@ class TodoList extends Component {
     this.changeInputValue = this.changeInputValue.bind(this);
     this.storeChange = this.storeChange.bind(this);
     this.onAddClicked = this.onAddClicked.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
     store.subscribe(this.storeChange);
   }
 
@@ -39,33 +40,15 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div>
-        <div style={{ textAlign: 'center'}}>
-          <Input placeholder={this.state.inputValue}
-                 style={{ width: '250px', margin: '10px'}}
-                 onChange={this.changeInputValue}
-                 value={this.state.inputValue}
-          />
-          <Button type="primary"
-                  onClick={this.onAddClicked}
-          >Add</Button>
-          <div>
-            <List bordered
-                  dataSource={this.state.dataList}
-                  renderItem={(item, index)=> (
-                    <div style={{position: "relative"}}>
-                      <List.Item>{item}</List.Item>
-                      <Button onClick={this.deleteItem.bind(this, index)}
-                              type="danger"
-                              style={{ position: "absolute", right: 0, top: 0}}
-                      >X</Button>
-                    </div>
-                  )}
-                  style={{ width: '40%', margin: '0 auto'}}>
-            </List>
-          </div>
-        </div>
-      </div>
+      <TodoListUI
+          inputValue={this.state.inputValue}
+          onChange={this.changeInputValue}
+          onClick={this.onAddClicked}
+          dataList={this.state.dataList}
+          deleteItem={this.deleteItem}
+          onAddClicked={this.onAddClicked}
+          changeInputValue={this.changeInputValue}
+      />
     );
   }
 }
