@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import { Input, Button, List } from 'antd'
 import store from './store'
+import { relative } from 'path';
 
 
 class TodoList extends Component {
@@ -29,7 +30,19 @@ class TodoList extends Component {
   }
 
   onAddClicked(event) {
+    if (!this.state.inputValue) {
+      return;
+    }
     const action = {type: 'addItem'};
+    store.dispatch(action);
+  }
+
+  deleteItem(index, event) {
+    const action = {
+      type: 'deleteItem',
+      index
+    };
+
     store.dispatch(action);
   }
 
@@ -48,8 +61,16 @@ class TodoList extends Component {
           <div>
             <List bordered
                   dataSource={this.state.dataList}
-                  renderItem={item=> (<List.Item>{item}</List.Item>)}
-                  style={{ width: '600px', margin: '0 auto'}}>
+                  renderItem={(item, index)=> (
+                    <div style={{position: "relative"}}>
+                      <List.Item>{item}</List.Item>
+                      <Button onClick={this.deleteItem.bind(this, index)}
+                              type="danger"
+                              style={{ position: "absolute", right: 0, top: 0}}
+                      >X</Button>
+                    </div>
+                  )}
+                  style={{ width: '40%', margin: '0 auto'}}>
             </List>
           </div>
         </div>

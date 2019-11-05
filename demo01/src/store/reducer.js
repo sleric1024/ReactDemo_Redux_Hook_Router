@@ -23,5 +23,11 @@ export default(state = defaultState, action) => {
     return newState;
   }
 
+  if (action.type === 'deleteItem') {
+    let newState = JSON.parse(JSON.stringify(state));
+    newState.dataList.splice(action.index, 1);
+    return newState;
+  }
+
   return state
 }
