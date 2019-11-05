@@ -3,29 +3,48 @@ import 'antd/dist/antd.css'
 import { Input, Button, List } from 'antd'
 import store from './store'
 
-// const listData = [
-//   'Today',
-//   'Tomorrow',
-//   'The day after tomorrow'
-// ];
 
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    console.log(store.getState())
-    this.state = store.getState()
+    this.state = store.getState();
+    console.log(store.getState());
+    this.changeInputValue = this.changeInputValue.bind(this);
+    this.storeChange = this.storeChange.bind(this);
+    this.onAddClicked = this.onAddClicked.bind(this);
+    store.subscribe(this.storeChange);
   }
+
+  changeInputValue(event) {
+    const action = {
+      type: 'changeListInput',
+      value: event.target.value
+    };
+
+    store.dispatch(action);
+  }
+
+  storeChange() {
+    this.setState(store.getState());
+  }
+
+  onAddClicked(event) {
+    const action = {type: 'addItem'};
+    store.dispatch(action);
+  }
+
   render() {
     return (
       <div>
         <div style={{ textAlign: 'center'}}>
           <Input placeholder={this.state.inputValue}
-                 style={{ width: '250px', margin: '10px'}}>
-
-          </Input>
-          <Button type="primary">
-            Add
-          </Button>
+                 style={{ width: '250px', margin: '10px'}}
+                 onChange={this.changeInputValue}
+                 value={this.state.inputValue}
+          />
+          <Button type="primary"
+                  onClick={this.onAddClicked}
+          >Add</Button>
           <div>
             <List bordered
                   dataSource={this.state.dataList}
