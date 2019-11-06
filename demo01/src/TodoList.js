@@ -3,7 +3,8 @@ import 'antd/dist/antd.css'
 import TodoListUI from './TodoListUI'
 import store from './store'
 import { relative } from 'path';
-import {changeInputAction, addItemAction, deleteItemAction} from './store/actionCreators'
+import {changeInputAction, addItemAction, deleteItemAction, getListAction} from './store/actionCreators'
+import axios from 'axios'
 
 
 class TodoList extends Component {
@@ -26,6 +27,17 @@ class TodoList extends Component {
   storeChange() {
     this.setState(store.getState());
   }
+
+  componentDidMount() {
+    console.log('didMount');
+    //https://www.easy-mock.com/mock/5dc18cbb43ff8e61fd932c49/demo01/getListDemo
+    axios.get('http://localhost:3000/data').then(res => {
+      const data = res;
+      const action = getListAction(data);
+      store.dispatch(action);
+    });
+  }
+
 
   onAddClicked(event) {
     if (!this.state.inputValue) {
