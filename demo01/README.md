@@ -4,10 +4,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm install`
 
+Install all the dependencies
+
+### `npm run mock`
+Start mock server form local
+Open [http://localhost:3000/data](http://localhost:3000/data)
+
+
+### `npm start`
+Choose 'Yes'
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
