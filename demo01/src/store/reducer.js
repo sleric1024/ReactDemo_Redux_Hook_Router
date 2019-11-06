@@ -2,11 +2,7 @@ import {CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST} from './actionTypes'
 
 const defaultState = {
   inputValue: 'Input something',
-  dataList: [
-    'Today',
-    'Tomorrow',
-    'The day after tomorrow'
-  ]
+  dataList: []
 }
 export default(state = defaultState, action) => {
   // console.log(state, action)
