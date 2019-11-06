@@ -22,7 +22,7 @@ export const getListAction = (data) => ({
 
 
 export const getTodoList = () => {
-  return (dispatch) => {
+  return (dispatch, getState, extraArgument) => {
     //https://www.easy-mock.com/mock/5dc18cbb43ff8e61fd932c49/demo01/getListDemo
     axios.get('http://localhost:3000/data').then(res => {
       const data = res;
