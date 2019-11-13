@@ -8,5 +8,6 @@ import UseEffect from './UseEffect';
 import RouterTest from './RouterTest';
 import Context from './Context';
 import TestReducer from './TestReducer';
+import ReducerDemo from './ReducerDemo';
 
-ReactDOM.render(<TestReducer />, document.getElementById('root'));
+ReactDOM.render(<ReducerDemo />, document.getElementById('root'));
