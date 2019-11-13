@@ -6,5 +6,7 @@ import MultiState from './MultiState';
 import Lifecycle from './Lifecycle';
 import UseEffect from './UseEffect';
 import RouterTest from './RouterTest';
+import Context from './Context';
+import TestReducer from './TestReducer';
 
-ReactDOM.render(<RouterTest />, document.getElementById('root'));
+ReactDOM.render(<TestReducer />, document.getElementById('root'));
