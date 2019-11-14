@@ -10,5 +10,7 @@ import Context from './Context';
 import TestReducer from './TestReducer';
 import ReducerDemo from './ReducerDemo';
 import UseMemoTest from './UseMemoTest';
+import UseRefTest from './UseRefTest';
+import HookTest from './HookTest';
 
-ReactDOM.render(<UseMemoTest />, document.getElementById('root'));
+ReactDOM.render(<HookTest />, document.getElementById('root'));
