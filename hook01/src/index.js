@@ -9,5 +9,6 @@ import RouterTest from './RouterTest';
 import Context from './Context';
 import TestReducer from './TestReducer';
 import ReducerDemo from './ReducerDemo';
+import UseMemoTest from './UseMemoTest';
 
-ReactDOM.render(<ReducerDemo />, document.getElementById('root'));
+ReactDOM.render(<UseMemoTest />, document.getElementById('root'));
