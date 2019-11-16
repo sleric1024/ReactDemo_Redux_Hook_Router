@@ -1,17 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
-function Index() {
-  return (
-    <div><h1>This is index page</h1></div>
-  );
-}
-
-function List() {
-  return (
-    <div><h1>This is list page</h1></div>
-  );
-}
+import Index from './Pages/Index';
+import List from './Pages/List';
 
 function AppRouter() {
   return (
