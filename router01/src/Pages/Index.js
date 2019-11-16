@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 export default class Index extends Component {
   constructor(props) {
@@ -16,10 +16,12 @@ export default class Index extends Component {
         content: "This is the third item"
       }]
     };
+    this.props.history.push("/home/");
   }
   render() {
     return (
       <div>
+        {/* <Redirect to="/home/"></Redirect> */}
         <h1>This is index page</h1>
         <ul>
           {
