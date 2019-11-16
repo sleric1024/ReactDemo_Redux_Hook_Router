@@ -5,9 +5,17 @@ class List extends Component {
     super(props);
     this.state = {};
   }
+
+  componentDidMount() {
+    let pramId = this.props.match.params.id;
+    this.setState({
+      id: pramId
+    });
+  }
+
   render() {
     return (
-      <div><h1>This is list page</h1></div>
+      <div><h1>This is list page: {this.state.id}</h1></div>
     );
   }
 }

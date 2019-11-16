@@ -9,10 +9,10 @@ function AppRouter() {
       <Router>
         <ul>
           <li><Link to="/">Main Page</Link></li>
-          <li><Link to="/list/">List Page</Link></li>
+          <li><Link to="/list/123">List Page</Link></li>
         </ul>
         <Route path="/" exact component={Index}></Route>
-        <Route path="/list" component={List}></Route>
+        <Route path="/list/:id" component={List}></Route>
       </Router>
     </div>
   );
