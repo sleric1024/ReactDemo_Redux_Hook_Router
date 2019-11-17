@@ -6,22 +6,35 @@ import Video from './Video';
 import Tips from './Tips';
 
 function AppRouter() {
+  let routerConfig = [
+    {path: '/', title: 'Blog', exact: true, component: Main},
+    {path: '/video/', title: 'Videos', exact: false, component: Video},
+    {path: '/tips', title: 'Tips', exact: false, component: Tips}
+  ]
   return (
     <Router>
       <div className="mainDiv">
         <div className="leftNav">
             <h3>First Level NavBar</h3>
             <ul>
-                <li> <Link to="/">Blog</Link> </li>
-                <li><Link to="/video/">Videos</Link> </li>
-                <li><Link to="/tips/">Tips</Link> </li>
+                {
+                  routerConfig.map((item, index) => {
+                    return (
+                    <li key={index}><Link to={item.path}>{item.title}</Link></li>
+                    );
+                  })
+                }
             </ul>
         </div>
 
         <div className="rightMain">
-          <Route path="/"  exact component={Main} />
-          <Route path="/video/" component={Video} />
-          <Route path="/tips/"  component={Tips} />
+          {
+            routerConfig.map((item, index) => {
+              return (
+                <Route key={index} path={item.path} exact={item.exact} component={item.component}></Route>
+              );
+            })
+          }
         </div>
       </div>
     </Router>
