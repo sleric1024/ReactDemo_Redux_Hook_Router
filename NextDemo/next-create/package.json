@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 80"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.25.2",
     "axios": "^0.19.0",
+    "babel-plugin-import": "^1.12.2",
     "json-server": "^0.15.1",
     "next": "9.1.4",
     "react": "16.12.0",

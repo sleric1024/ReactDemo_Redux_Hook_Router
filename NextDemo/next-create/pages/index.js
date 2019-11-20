@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/Link'
 import Router from 'next/Router'
+import '../static/style.css'
 
 const Home = () => {
   function goToA() {
