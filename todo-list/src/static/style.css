@@ -5,3 +5,7 @@
   width: 31.25rem;
   margin-right: 0.625rem;
 }
+
+.todoList .listContent {
+  font-size: 1.375rem;
+}

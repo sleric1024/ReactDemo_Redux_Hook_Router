@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { Button, List } from 'antd';
 import {getTodoList} from '../redux/actions';
 import store from '../redux/store';
+import '../static/style.css';
 
 class TodoList extends Component {
   constructor(props) {
@@ -19,14 +20,14 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="todoList">
         <List bordered
               dataSource={this.props.todoList}
               renderItem={(item, index)=> (
                   <List.Item actions={[
                       <Button type="primary" danger>Delete</Button>,
                       <Button type="primary">Done</Button>]}>
-                      {item.content}
+                      <div className="listContent">{item.content}</div>
                   </List.Item>
 
               )}

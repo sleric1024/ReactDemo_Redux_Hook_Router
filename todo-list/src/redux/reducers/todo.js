@@ -17,6 +17,20 @@ export default(state = defaultState, action) => {
       return {
         todoList: data
       };
+    };
+
+    case ADD_ITEM: {
+
+      let {id, content} = action.payload;
+
+      const newItemList = state.todoList.slice().concat({
+        id,
+        content
+      });
+
+      return {
+        todoList: newItemList
+      };
     }
 
     default:
