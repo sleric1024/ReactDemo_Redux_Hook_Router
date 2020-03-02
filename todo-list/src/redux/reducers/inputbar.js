@@ -1,17 +1,16 @@
 import {
-  GET_LIST,
-  CHANGE_INPUT,
-  ADD_ITEM,
-  DELETE_ITEM
+  DONE_TEST
 } from '../actionType';
 
 const defaultState = {
-  test: []
+  test: [1, 2, 3]
 };
 
 export default(state = defaultState, action) => {
   switch (action.type) {
-
+    case DONE_TEST: {
+      return state;
+    };
 
     default:
       return state;

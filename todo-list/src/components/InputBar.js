@@ -4,7 +4,7 @@ import { Input, Button} from 'antd';
 import { getTodoList } from '../redux/actions';
 import store from '../redux/store';
 import '../static/style.css';
-import {onAddTodo} from '../redux/actions';
+import {onAddTodo, doneTestAction} from '../redux/actions';
 
 class InputBar extends Component {
   constructor(props) {
@@ -38,12 +38,21 @@ class InputBar extends Component {
       <div className="inputArea">
         <Input className="inputBar" value={this.state.input} onChange={e => this._onChange(e.target.value)}></Input>
         <Button type="primary" onClick={this._onAdd}>Add</Button>
+        <Button type="primary" onClick={() => {
+          this.props.doneTestAction();
+        }}>Test</Button>
       </div>
     )
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    inputState: state.inputbar.test
+  };
+};
+
 export default connect(
-  null,
-  {onAddTodo}
+  mapStateToProps,
+  {onAddTodo, doneTestAction}
 )(InputBar);

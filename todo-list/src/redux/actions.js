@@ -4,7 +4,8 @@ import {
   GET_LIST,
   CHANGE_INPUT,
   ADD_ITEM,
-  DELETE_ITEM
+  DELETE_ITEM,
+  DONE_TEST
 } from './actionType';
 
 export const getTodoList = () => {
@@ -43,4 +44,8 @@ export const deleteItemAction = (id) => ({
   payload: {
     id,
   }
+});
+
+export const doneTestAction = () => ({
+  type: DONE_TEST
 });
