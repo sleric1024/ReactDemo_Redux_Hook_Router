@@ -37,3 +37,10 @@ export const addTodoAction = (content) => ({
     content,
   }
 });
+
+export const deleteItemAction = (id) => ({
+  type: DELETE_ITEM,
+  payload: {
+    id,
+  }
+});

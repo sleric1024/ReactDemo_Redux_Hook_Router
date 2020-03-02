@@ -4,6 +4,7 @@ import { Button, List } from 'antd';
 import {getTodoList} from '../redux/actions';
 import store from '../redux/store';
 import '../static/style.css';
+import {deleteItemAction} from '../redux/actions';
 
 class TodoList extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class TodoList extends Component {
               dataSource={this.props.todoList}
               renderItem={(item, index)=> (
                   <List.Item actions={[
-                      <Button type="primary" danger>Delete</Button>,
+                      <Button type="primary" danger onClick={() => {
+                        this.props.deleteItemAction(item.id);
+                      }}>Delete</Button>,
                       <Button type="primary">Done</Button>]}>
                       <div className="listContent">{item.content}</div>
                   </List.Item>
@@ -46,7 +49,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {
-
-  }
+  {deleteItemAction}
 )(TodoList);

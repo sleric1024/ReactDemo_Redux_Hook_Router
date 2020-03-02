@@ -20,13 +20,22 @@ export default(state = defaultState, action) => {
     };
 
     case ADD_ITEM: {
-
       let {id, content} = action.payload;
-
       const newItemList = state.todoList.slice().concat({
         id,
         content
       });
+
+      return {
+        todoList: newItemList
+      };
+    }
+
+    case DELETE_ITEM: {
+      let {id} = action.payload;
+      const newItemList = state.todoList.slice();
+      const index = newItemList.findIndex(item => item.id === id);
+      newItemList.splice(index, 1);
 
       return {
         todoList: newItemList
