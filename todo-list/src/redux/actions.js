@@ -2,10 +2,10 @@ import axios from 'axios'
 import store from './store';
 import {
   GET_LIST,
-  CHANGE_INPUT,
   ADD_ITEM,
   DELETE_ITEM,
-  DONE_TEST
+  DONE_TEST,
+  DONE_ITEM
 } from './actionType';
 
 export const getTodoList = () => {
@@ -48,4 +48,12 @@ export const deleteItemAction = (id) => ({
 
 export const doneTestAction = () => ({
   type: DONE_TEST
+});
+
+export const doneItemAction = (id, done) => ({
+  type: DONE_ITEM,
+  payload: {
+    id,
+    done
+  }
 });

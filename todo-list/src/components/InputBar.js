@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Button} from 'antd';
-import { getTodoList } from '../redux/actions';
-import store from '../redux/store';
 import '../static/style.css';
 import {onAddTodo, doneTestAction} from '../redux/actions';
 
@@ -38,9 +36,9 @@ class InputBar extends Component {
       <div className="inputArea">
         <Input className="inputBar" value={this.state.input} onChange={e => this._onChange(e.target.value)}></Input>
         <Button type="primary" onClick={this._onAdd}>Add</Button>
-        <Button type="primary" onClick={() => {
+        {/* <Button type="primary" onClick={() => {
           this.props.doneTestAction();
-        }}>Test</Button>
+        }}>Test</Button> */}
       </div>
     )
   }

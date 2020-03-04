@@ -4,16 +4,9 @@ import { Button, List } from 'antd';
 import {getTodoList} from '../redux/actions';
 import store from '../redux/store';
 import '../static/style.css';
-import {deleteItemAction} from '../redux/actions';
+import {deleteItemAction, doneItemAction} from '../redux/actions';
 
 class TodoList extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   items: props.items
-    // }
-  }
-
   componentDidMount() {
     const action = getTodoList();
     store.dispatch(action);
@@ -25,17 +18,18 @@ class TodoList extends Component {
         <List bordered
               dataSource={this.props.todoList}
               renderItem={(item, index)=> (
-                  <List.Item actions={[
-                      <Button type="primary" danger onClick={() => {
-                        this.props.deleteItemAction(item.id);
-                      }}>Delete</Button>,
-                      <Button type="primary">Done</Button>]}>
-                      <div className="listContent">{item.content}</div>
-                  </List.Item>
-
-              )}
-              style={{ width: '60%', margin: '0 auto'}}>
-          </List>
+                <List.Item actions={[
+                    <Button type="primary" danger onClick={() => {
+                      this.props.deleteItemAction(item.id);
+                    }}>Delete</Button>,
+                    <Button type="primary" onClick={() => {
+                      this.props.doneItemAction(item.id, item.done);
+                    }}>Done</Button>]}>
+                    <div className={item.done ? 'listContent done' : 'listContent'}>{item.content}</div>
+                </List.Item>
+            )}
+            style={{ width: '60%', margin: '0 auto'}}>
+        </List>
       </div>
     )
   }
@@ -49,5 +43,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {deleteItemAction}
+  {deleteItemAction, doneItemAction}
 )(TodoList);

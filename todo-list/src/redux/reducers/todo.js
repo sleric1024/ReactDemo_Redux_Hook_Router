@@ -1,8 +1,8 @@
 import {
   GET_LIST,
-  CHANGE_INPUT,
   ADD_ITEM,
-  DELETE_ITEM
+  DELETE_ITEM,
+  DONE_ITEM
 } from '../actionType';
 
 const defaultState = {
@@ -23,7 +23,8 @@ export default(state = defaultState, action) => {
       let {id, content} = action.payload;
       const newItemList = state.todoList.slice().concat({
         id,
-        content
+        content,
+        done: false
       });
 
       return {
@@ -36,6 +37,20 @@ export default(state = defaultState, action) => {
       const newItemList = state.todoList.slice();
       const index = newItemList.findIndex(item => item.id === id);
       newItemList.splice(index, 1);
+
+      return {
+        todoList: newItemList
+      };
+    }
+
+    case DONE_ITEM: {
+      let {id, done} = action.payload;
+      const newItemList = state.todoList.slice();
+      newItemList.map(item => {
+        if (item.id === id) {
+          item.done = !done;
+        }
+      });
 
       return {
         todoList: newItemList
